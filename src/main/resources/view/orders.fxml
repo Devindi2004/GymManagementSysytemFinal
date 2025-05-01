@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="669.0" style="-fx-background-color: #6f6341;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.ordersController ">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="975.0" style="-fx-background-color: #6f6341;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.ordersController ">
     <children>
         <AnchorPane prefHeight="514.0" prefWidth="669.0" style="-fx-background-color: #6f6341;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -33,7 +33,7 @@
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="txtChemicalName" prefHeight="27.0" prefWidth="547.0" promptText="O001" style="-fx-background-color: #fff; -fx-border-color: #c1b495; -fx-border-width: 0 0 1px 0;" HBox.hgrow="ALWAYS">
+                                        <TextField fx:id="txtorderId" prefHeight="27.0" prefWidth="547.0" promptText="O001" style="-fx-background-color: #fff; -fx-border-color: #c1b495; -fx-border-width: 0 0 1px 0;" HBox.hgrow="ALWAYS">
                                             <HBox.margin>
                                                 <Insets right="10.0" top="5.0" />
                                             </HBox.margin>
@@ -51,7 +51,7 @@
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Label>
-                                        <TextField fx:id="txtID1" layoutX="127.0" layoutY="15.0" prefHeight="26.0" prefWidth="548.0" promptText="M001" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
+                                        <TextField fx:id="txtmemberId" layoutX="127.0" layoutY="15.0" prefHeight="26.0" prefWidth="849.0" promptText="M001" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -70,7 +70,7 @@
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Label>
-                                        <TextField fx:id="txtID2" layoutX="127.0" layoutY="15.0" prefHeight="23.0" prefWidth="550.0" promptText="name" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
+                                        <TextField fx:id="txtName" layoutX="127.0" layoutY="15.0" prefHeight="26.0" prefWidth="848.0" promptText="name" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -91,7 +91,7 @@
                                                 <Insets left="10.0" top="5.0" />
                                             </HBox.margin>
                                         </Label>
-                              <DatePicker prefHeight="26.0" prefWidth="546.0" promptText="DD/MM/YYYY">
+                              <DatePicker prefHeight="26.0" prefWidth="850.0" promptText="DD/MM/YYYY">
                                  <HBox.margin>
                                     <Insets right="10.0" top="5.0" />
                                  </HBox.margin>
@@ -108,7 +108,7 @@
                                                 <Insets left="10.0" top="5.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <TextField fx:id="txtID3" prefHeight="26.0" prefWidth="545.0" promptText="000.00" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
+                                        <TextField fx:id="txtAmountId" prefHeight="26.0" prefWidth="855.0" promptText="000.00" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -194,7 +194,7 @@
                                     </graphic></Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="tblChemical" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tblOrder" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
                             <columns>
                                 <TableColumn prefWidth="75.0" text="Order ID" />
                                 <TableColumn prefWidth="75.0" text="Member ID" />
