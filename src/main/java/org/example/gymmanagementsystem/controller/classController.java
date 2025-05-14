@@ -12,14 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.gymmanagementsystem.dto.ClassInfoDTO;
 import org.example.gymmanagementsystem.model.ClassModel;
-import org.example.gymmanagementsystem.model.ClassModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class classController {
 
-    private final ClassModel classModel = new ClassModel();
+    private final ClassModel cModel = new ClassModel();
 
     @FXML
     private TableColumn<?, ?> DurationClm;
@@ -49,7 +48,7 @@ public class classController {
     }
 
     private void loadtable() throws SQLException, ClassNotFoundException {
-        ArrayList <ClassInfoDTO> classInfoDTOS = classModel.getAllClass();
+        ArrayList <ClassInfoDTO> classInfoDTOS = cModel.getAllClass();
 
         ObservableList<ClassInfoDTO> data = FXCollections.observableArrayList();
 
@@ -61,7 +60,7 @@ public class classController {
     }
 
     private void setNextId() throws SQLException, ClassNotFoundException {
-        String nextId = classModel.getNextId();
+        String nextId = cModel.getNextId();
         txtClassId.setText(nextId);
     }
 
@@ -76,7 +75,7 @@ public class classController {
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtClassId.getText();
 
-        boolean isDelete = classModel.delete(id);
+        boolean isDelete = cModel.delete(id);
         if (isDelete) {
             setNextId();
             loadtable();
@@ -99,16 +98,16 @@ public class classController {
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String classId = txtClassId.getText();
-        String duration = txtIDuration.getText();
+        String Duration = txtIDuration.getText();
         String time = txtTime.getText();
 
         ClassInfoDTO classInfoDTO = new ClassInfoDTO(
                 classId,
                 time,
-                duration
+                Duration
         );
 
-        boolean isSave = classModel.save(classInfoDTO);
+        boolean isSave = cModel.save(classInfoDTO);
 
         if (isSave) {
             setNextId();
@@ -123,14 +122,15 @@ public class classController {
     void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String classId = txtClassId.getText();
         String time = txtTime.getText();
-        String duration = txtIDuration.getText();
+        String Duration = txtIDuration.getText();
 
-        ClassInfoDTO classInfoDTO = new ClassInfoDTO(classId,
+        ClassInfoDTO classInfoDTO = new ClassInfoDTO(
+                classId,
                 time,
-                duration
+                Duration
         );
 
-        boolean isUpdate = classModel.update(classInfoDTO);
+        boolean isUpdate = cModel.update(classInfoDTO);
         if (isUpdate) {
             setNextId();
             loadtable();

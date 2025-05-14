@@ -175,11 +175,12 @@
                                     </graphic></Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="tblTrainer" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tblTrainer" onMouseClicked="#tableClickOnAction" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Suppliment ID" />
-                                <TableColumn prefWidth="75.0" text="Name" />
-                                <TableColumn prefWidth="75.0" text="Description" />
+                                <TableColumn fx:id="clmTrainer" prefWidth="75.0" text="Trainer ID" />
+                                <TableColumn fx:id="clmTName" prefWidth="75.0" text="Name" />
+                                <TableColumn fx:id="clmContact" prefWidth="75.0" text="Contact" />
+                        <TableColumn fx:id="clmspecialization" prefWidth="75.0" text="specialization" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

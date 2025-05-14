@@ -177,12 +177,12 @@
                                     </graphic></Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="tblDiatPlan" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tblDiatPlan" onMouseClicked="#tableClickOnAction" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Diat Plan ID" />
-                                <TableColumn prefWidth="75.0" text="Plan Name" />
-                                <TableColumn prefWidth="75.0" text="Drink" />
-                        <TableColumn prefWidth="75.0" text="Food" />
+                                <TableColumn fx:id="clmdiatplan" prefWidth="75.0" text="Diat Plan ID" />
+                                <TableColumn fx:id="clmplanName" prefWidth="75.0" text="Plan Name" />
+                                <TableColumn fx:id="clmDrink" prefWidth="75.0" text="Drink" />
+                        <TableColumn fx:id="clmFood" prefWidth="75.0" text="Food" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

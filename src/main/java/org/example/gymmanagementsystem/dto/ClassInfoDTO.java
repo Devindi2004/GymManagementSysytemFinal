@@ -13,4 +13,4 @@ public class ClassInfoDTO {
     private String time;
     private String Duration;
 
-    }
+}

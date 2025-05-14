@@ -28,7 +28,7 @@ public class ClassModel {
     }
 
     public boolean update(ClassInfoDTO classInfoDTO) throws SQLException, ClassNotFoundException {
-        return CrudUtil.execute("UPDATE class SET time = ?, duration = ? WHERE class_id = ?",classInfoDTO.getTime(),classInfoDTO.getDuration(),classInfoDTO.getClassId());
+        return CrudUtil.execute("UPDATE class SET time = ?, shedule_date = ? WHERE class_id = ?",classInfoDTO.getTime(),classInfoDTO.getDuration(),classInfoDTO.getClassId());
 
     }
 

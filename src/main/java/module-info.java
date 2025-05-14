@@ -3,6 +3,7 @@ module org.example.gymmanagementsystem {
     requires javafx.fxml;
     requires java.sql;
     requires static lombok;
+    requires java.desktop;
 
 
     opens org.example.gymmanagementsystem to javafx.fxml;
