@@ -15,7 +15,7 @@ import java.io.IOException;
         public TextField txtUsername;
         public Button btnLogin;
         public Label lblError;
-        private org.example.gymmanagementsystem.User user = new User("tharu", "2004");
+        private org.example.gymmanagementsystem.User user = new User("1", "1");
 
         public void loginOnAction(ActionEvent actionEvent) {
             String username = txtUsername.getText();

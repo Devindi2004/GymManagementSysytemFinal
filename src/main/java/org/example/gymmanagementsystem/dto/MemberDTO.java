@@ -11,10 +11,12 @@ public class MemberDTO {
     public MemberDTO(String memberId, String dietPlanId, String name, String email, String phone, String age) {
         this.memberId = memberId;
         this.dietPlanId = dietPlanId;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
         this.age = age;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+
+
     }
 
     public String getMemberId() {

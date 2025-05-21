@@ -61,8 +61,6 @@ public class diatPlanController {
             data.add(d);
         }
 
-
-
         tblDiatPlan.setItems(data);
     }
 

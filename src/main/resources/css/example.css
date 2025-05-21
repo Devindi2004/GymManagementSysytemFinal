@@ -1,0 +1,60 @@
+/* General Pane Background */
+.Ancorpain {
+    -fx-background-color: linear-gradient(to bottom right, #1e1e1e, #2d2d2d);
+}
+
+/* Side Pane Styling */
+.Backgrount1 {
+    -fx-background-color: #2f2f2f;
+}
+
+/* Sidebar Button Styling */
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: transparent transparent #444 transparent;
+    -fx-padding: 10 15 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0.1, 0.0, 1.0);
+    -fx-background-radius: 8;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+    -fx-background-color: linear-gradient(to right, #ff8c00, #ffa500);
+    -fx-text-fill: black;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Gradient Background Class */
+.bt-gradient {
+    -fx-background-color: linear-gradient(to bottom right, #434343, #000000);
+}
+
+/* Button Style */
+.button1 {
+    -fx-background-color: #d90429;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 20;
+}
+
+.button1:hover {
+    -fx-background-color: #ef233c;
+    -fx-text-fill: white;
+}
+
+/* Label Styling */
+#btnGYMId {
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 28px;
+    -fx-text-fill: #ffd700;
+}
