@@ -47,6 +47,8 @@ public class diatPlanController {
     @FXML
     private TextField txtPlanNameId;
 
+
+
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
         setNextId();
@@ -162,12 +164,6 @@ public class diatPlanController {
             txtDrinkId.setText(selectedItem.getDrink());
 
 
-//            // save button disable
-//            btnSave.setDisable(true);
-//
-//            // update, delete button enable
-//            btnUpdate.setDisable(false);
-//            btnDelete.setDisable(false);
         }
     }
 }

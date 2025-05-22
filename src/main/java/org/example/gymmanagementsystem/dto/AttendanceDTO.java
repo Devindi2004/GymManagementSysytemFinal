@@ -1,5 +1,7 @@
 package org.example.gymmanagementsystem.dto;
 
+import java.time.LocalDate;
+
 public class AttendanceDTO {
     private String attendanceId;
     private String memberId;
@@ -9,6 +11,9 @@ public class AttendanceDTO {
         this.attendanceId = attendanceId;
         this.memberId = memberId;
         this.date = date;
+    }
+
+    public static void add(AttendanceDTO at) {
     }
 
     public String getAttendanceId() {
