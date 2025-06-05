@@ -138,8 +138,8 @@ public class equipmentController {
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String equipId = txtequipId.getText();
-        String supplierId = txtSuppId.getText();
-        String classId = txtClassId.getText();
+        String supplierId = cmbSupplierId.getValue().toString();
+        String classId = cmbClassId.getValue().toString();
         String name = txtNameId.getText();
         String typeId = txtTypeId.getText();
 

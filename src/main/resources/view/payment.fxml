@@ -8,205 +8,124 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="867.0" style="-fx-background-color: #6f6341;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.paymentController">
-    <children>
-        <AnchorPane prefHeight="543.0" prefWidth="669.0" style="-fx-background-color: #6f6341;" AnchorPane.bottomAnchor="-29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <VBox layoutY="-1.0" prefHeight="660.0" prefWidth="669.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
-                    <children>
-                        <VBox prefHeight="188.0" prefWidth="867.0">
-                            <children>
-                                <HBox prefHeight="35.0" prefWidth="600.0" />
-                                <HBox prefHeight="29.0" prefWidth="600.0">
-                                    <children>
-                                        <Label prefHeight="26.0" prefWidth="120.0" text="Payment ID" textFill="#fffefe">
-                                            <HBox.margin>
-                                                <Insets left="10.0" top="20.0" />
-                                            </HBox.margin>
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <TextField fx:id="txtPaymentId" prefHeight="26.0" prefWidth="270.0" promptText="P001" style="-fx-background-color: #fff; -fx-border-color: #c1b495; -fx-border-width: 0 0 1px 0;">
-                                            <HBox.margin>
-                                                <Insets right="10.0" top="20.0" />
-                                            </HBox.margin>
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font></TextField>
-                                        <Label prefHeight="25.0" prefWidth="138.0" text="Payment Date" textFill="#f5f4f4">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets left="10.0" top="20.0" />
-                                            </HBox.margin>
-                                        </Label>
-                                        <DatePicker fx:id="txtDate" prefHeight="26.0" prefWidth="275.0" promptText="DD/MM/YYYY">
-                                            <HBox.margin>
-                                                <Insets right="10.0" top="20.0" />
-                                            </HBox.margin>
-                                        </DatePicker>
-                                    </children>
-                                </HBox>
-                                <HBox layoutX="10.0" layoutY="45.0" prefHeight="29.0" prefWidth="600.0">
-                                    <children>
-                                        <Label prefHeight="26.0" prefWidth="120.0" text="Member ID" textFill="#fffefe">
-                                            <HBox.margin>
-                                                <Insets left="10.0" top="20.0" />
-                                            </HBox.margin>
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font></Label>
-                              <ComboBox fx:id="cmbMemberId" prefHeight="26.0" prefWidth="271.0" promptText="M001">
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin>
-                              </ComboBox>
-                                        <Label prefHeight="25.0" prefWidth="147.0" text="Amount" textFill="#f5f4f4">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets left="10.0" top="20.0" />
-                                            </HBox.margin>
-                                        </Label>
-                                        <TextField fx:id="txtAmount" prefHeight="26.0" prefWidth="277.0" promptText="000.00" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-width: 0 0 1px 0;">
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                            <HBox.margin>
-                                                <Insets right="10.0" top="20.0" />
-                                            </HBox.margin>
-                                        </TextField>
-                                    </children>
-                                </HBox>
-                                <HBox layoutX="10.0" layoutY="74.0" prefHeight="29.0" prefWidth="600.0">
-                                    <children>
-                                        <Label prefHeight="26.0" prefWidth="173.0" text="Payment Method" textFill="#f5f4f4">
-                                            <HBox.margin>
-                                                <Insets left="10.0" top="20.0" />
-                                            </HBox.margin>
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                              </Label>
-                              <ComboBox fx:id="cmbPaymentId" prefHeight="26.0" prefWidth="246.0" promptText="P001">
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin>
-                              </ComboBox>
-                                    </children>
-                                </HBox>
-                                <HBox layoutX="10.0" layoutY="103.0" prefHeight="29.0" prefWidth="600.0" />
-                                <HBox layoutX="10.0" layoutY="132.0" prefHeight="29.0" prefWidth="600.0" />
-                                <HBox layoutX="10.0" layoutY="137.0" prefHeight="29.0" prefWidth="600.0" />
-                                <HBox layoutX="10.0" layoutY="157.0" prefHeight="39.0" prefWidth="669.0" />
-                            </children>
-                        </VBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="669.0" style="-fx-background-color: #6f6341;">
-                            <children>
-                                <Button mnemonicParsing="false" onAction="#btnGenarateROnAction" style="-fx-background-color: #a99972;" text="Genarate Report" textFill="#f5f4f4">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../../../../Downloads/icons8-report-50.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
-                                <Button focusTraversable="false" mnemonicParsing="false" onAction="#btnUpdateOnAction" style="-fx-background-color: #a99972;" text="Update" textFill="#f2efef">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../icon/icons8-update-50%20(1).png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
-                                <Button mnemonicParsing="false" onAction="#btnResetOnAction" style="-fx-background-color: #a99972;" text="Reset" textFill="#f8f6f6">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../icon/icons8-synchronize-30.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
-                                <Button mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-background-color: #a99972;" text="Save" textFill="#f8f3f3">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../icon/icons8-save-32.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
-                                <Button mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: #a99972;" text="Delete" textFill="#f5f5f5">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../icon/icons8-delete-24.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
-                            </children>
-                        </HBox>
-                        <TableView fx:id="tblPayment" prefHeight="151.0" prefWidth="649.0" style="-fx-background-color: #c1b495; -fx-background-color: #c1b495;" VBox.vgrow="ALWAYS">
-                            <columns>
-                                <TableColumn prefWidth="75.0" text="Order ID" />
-                                <TableColumn prefWidth="75.0" text="Member ID" />
-                                <TableColumn prefWidth="75.0" text="Name" />
-                                <TableColumn prefWidth="75.0" text="Date" />
-                                <TableColumn prefWidth="75.0" text="Amount" />
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <VBox.margin>
-                                <Insets left="10.0" right="10.0" />
-                            </VBox.margin>
-                        </TableView>
-                    </children>
-                </VBox>
-            </children>
-        </AnchorPane>
-    </children>
+<AnchorPane prefHeight="720" prefWidth="1000" style="-fx-background-color: #e0c98d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.paymentController">
+    <VBox alignment="TOP_CENTER" layoutX="30" layoutY="30" prefWidth="940" spacing="25">
+        <padding>
+            <Insets bottom="20" left="30" right="30" top="20" />
+        </padding>
+
+        <!-- Title -->
+        <Label text="Payment Management" textFill="#5d4524">
+            <font>
+                <Font name="System Bold" size="28" />
+            </font>
+        </Label>
+
+        <!-- Form -->
+        <GridPane hgap="15" vgap="18">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="35" />
+                <ColumnConstraints percentWidth="65" />
+            </columnConstraints>
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+
+            <!-- Payment ID -->
+            <Label text="Payment ID" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <TextField fx:id="txtPaymentId" promptText="P001" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <!-- Member ID -->
+            <Label text="Member ID" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <ComboBox fx:id="cmbMemberId" onAction="#setMemberDataOnAction" promptText="Select Member" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <!-- Member Name -->
+            <Label text="Member Name" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <TextField fx:id="txtMemberName" promptText="Member name" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <!-- Payment Date -->
+            <Label text="Payment Date" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <DatePicker fx:id="dtpPaymentDate" promptText="Select Date" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <!-- Payment Method -->
+            <Label text="Payment Method" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <ComboBox fx:id="cmbPaymentMethod" promptText="Select Payment Method" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <!-- Amount -->
+            <Label text="Amount" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <TextField fx:id="txtAmount" promptText="000.00" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <!-- Payment Type -->
+            <Label text="Payment Type" textFill="#5d4524" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                <font>
+                    <Font name="System Bold" size="16" />
+                </font>
+            </Label>
+            <ComboBox fx:id="cmbPaymentType" promptText="Select Payment Type" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-radius: 6; -fx-background-radius: 6;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+
+        <!-- Buttons -->
+        <HBox alignment="CENTER" spacing="15">
+            <Button onAction="#btnSaveOnAction" style="-fx-background-color: #8b6f47; -fx-background-radius: 8; -fx-font-weight: bold;" text="Save Payment" textFill="#fff" />
+            <Button onAction="#btnUpdateOnAction" style="-fx-background-color: #ba9f72; -fx-background-radius: 8; -fx-font-weight: bold;" text="Update" textFill="#fff" />
+            <Button onAction="#btnDeleteOnAction" style="-fx-background-color: #8b4542; -fx-background-radius: 8; -fx-font-weight: bold;" text="Delete" textFill="#fff" />
+            <Button onAction="#btnResetOnAction" style="-fx-background-color: #7a6b57; -fx-background-radius: 8; -fx-font-weight: bold;" text="Reset" textFill="#fff" />
+            <Button onAction="#btnGenerateROnAction" style="-fx-background-color: #4b3a1f; -fx-background-radius: 8; -fx-font-weight: bold;" text="Generate Report" textFill="#fff" />
+        </HBox>
+
+        <!-- Table -->
+        <TableView fx:id="tblPayment" onMouseClicked="#tableClickOnAction" prefHeight="250" style="-fx-background-color: #fff8e1; -fx-border-color: #8b6f47; -fx-border-width: 1; -fx-border-radius: 5;">
+            <columns>
+                <TableColumn fx:id="clmPaymentId" prefWidth="100.0" text="Payment ID" />
+                <TableColumn fx:id="clmMemberId" prefWidth="118.0" text="Member ID" />
+                <TableColumn fx:id="clmMemberName" prefWidth="142.0" text="Member Name" />
+                <TableColumn fx:id="clmPaymentDate" prefWidth="140.0" text="Payment Date" />
+                <TableColumn fx:id="clmPaymentMethod" prefWidth="133.0" text="Payment Method" />
+                <TableColumn fx:id="clmAmount" minWidth="0.0" prefWidth="102.0" text="Amount" />
+                <TableColumn fx:id="clmPaymentType" prefWidth="143.0" text="Payment Type" />
+            </columns>
+        </TableView>
+    </VBox>
 </AnchorPane>

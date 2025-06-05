@@ -120,7 +120,7 @@ public class sessionController {
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String sessionId = txtSessionId.getText();
-        String classID = txtClassID.getText();
+        String classID = cmbClassId.getValue().toString();
         String time = txtTime.getText();
         String type = txtType.getText();
         String date = String.valueOf(txtdate.getValue());

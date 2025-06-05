@@ -3,11 +3,16 @@ package org.example.gymmanagementsystem.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import org.example.gymmanagementsystem.HelloApplication;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +30,8 @@ public class dashBoardController implements Initializable {
     public Button btnSupplimentId;
     public Button btnOredrIid;
     public Label btnGYMId;
+    public Button btnEquipment;
+    public ImageView txtequipId;
 
     public void ClassOnAction(ActionEvent actionEvent) {
         nevigateTo("/view/class.fxml");
@@ -50,8 +57,12 @@ public class dashBoardController implements Initializable {
         nevigateTo("/view/orders.fxml");
     }
 
-    public void goBackAction(ActionEvent actionEvent) {
-        nevigateTo("/view/goBack.fxml");
+    public void goBackAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/Logging.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) btnGYMId.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void sessionOnAction(ActionEvent actionEvent) {

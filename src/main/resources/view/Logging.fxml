@@ -41,14 +41,6 @@
 
             <HBox spacing="10">
                 <Button fx:id="btnLogin" onAction="#loginOnAction" prefHeight="33.0" style="-fx-background-color: #E50914; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-pref-width: 100;" text="Login" />
-                <Button fx:id="btnGoogle" prefHeight="34.0" prefWidth="262.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 8; -fx-pref-width: 180;" text="Login with Google">
-               <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icon/icons8-google-48.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
             </HBox>
         </VBox>
     </left>
