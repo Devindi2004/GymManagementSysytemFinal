@@ -1,6 +1,7 @@
 package org.example.gymmanagementsystem.model;
 
-import org.example.gymmanagementsystem.dto.ClassInfoDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.gymmanagementsystem.dto.DietPlanDTO;
 import org.example.gymmanagementsystem.util.CrudUtil;
 
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class diatPlanModel {
+public class DiatPlanModel {
 
     public static String getNextId() throws SQLException, ClassNotFoundException {
         ResultSet rs = CrudUtil.execute("select diat_plan_id from diat_plan order by diat_plan_id DESC limit 1");
@@ -21,6 +22,16 @@ public class diatPlanModel {
             return String.format("D%03d", nextIdNumber);
         }
         return tableCharactor + "001";
+    }
+
+    public static ObservableList getAllDiatPlanId() throws SQLException, ClassNotFoundException {
+        ResultSet rs = CrudUtil.execute("select diat_plan_id from diat_plan");
+        ObservableList list = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+            list.add(rs.getString("diat_plan_id"));
+        }
+        return list;
     }
 
     public boolean save(DietPlanDTO d) throws SQLException, ClassNotFoundException {

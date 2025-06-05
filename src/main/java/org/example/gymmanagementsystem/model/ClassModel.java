@@ -1,5 +1,7 @@
 package org.example.gymmanagementsystem.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.gymmanagementsystem.dto.ClassInfoDTO;
 import org.example.gymmanagementsystem.util.CrudUtil;
 
@@ -8,6 +10,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClassModel {
+
+    public static ObservableList Allclassid() throws SQLException, ClassNotFoundException {
+        ResultSet rs = CrudUtil.execute("select class_id from class");
+        ObservableList list = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+            list.add(rs.getString("class_id"));
+        }
+        return list;
+    }
+
 
     public String getNextId() throws SQLException, ClassNotFoundException {
         ResultSet rs = CrudUtil.execute("select class_id from class order by class_id DESC limit 1");

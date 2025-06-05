@@ -13,5 +13,7 @@ public class SupplementDTO {
     private String supplimentId;
     private String name;
     private String description;
+    private String price;
+    private String quantity;
 
 }

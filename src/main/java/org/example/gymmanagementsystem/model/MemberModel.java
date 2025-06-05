@@ -1,6 +1,7 @@
 package org.example.gymmanagementsystem.model;
 
-import org.example.gymmanagementsystem.dto.DietPlanDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.gymmanagementsystem.dto.MemberDTO;
 import org.example.gymmanagementsystem.util.CrudUtil;
 
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class memberModel {
+public class MemberModel {
 
     public static String getnextId() throws SQLException, ClassNotFoundException {
         ResultSet rs = CrudUtil.execute("select member_id from member order by member_id DESC limit 1");
@@ -21,6 +22,28 @@ public class memberModel {
             return String.format("M%03d", nextIdNumber);
         }
         return tableCharactor + "001";
+    }
+
+    public static ObservableList Allclassid() throws SQLException, ClassNotFoundException {
+        ResultSet rs = CrudUtil.execute("select member_id from member");
+        ObservableList list = FXCollections.observableArrayList();
+
+        while (rs.next()){
+            list.add(rs.getString("member_id"));
+
+        }
+        return list;
+    }
+
+    public static ObservableList AllMemberId() throws SQLException, ClassNotFoundException {
+        ResultSet rs = CrudUtil.execute("select member_id from member");
+        ObservableList list = FXCollections.observableArrayList();
+
+        while (rs.next()){
+            list.add(rs.getString("member_id"));
+
+        }
+        return list;
     }
 
     public ArrayList<MemberDTO> getAllmember() throws SQLException, ClassNotFoundException {
@@ -52,5 +75,17 @@ public class memberModel {
     public boolean update(MemberDTO m) throws SQLException, ClassNotFoundException {
         return CrudUtil.execute("update member set diat_plan_id = ?,name = ?, email = ? ,phone = ?,age = ? WHERE member_id = ?", m.getDietPlanId(),m.getName(),m.getEmail(),m.getPhone(),m.getAge(),m.getMemberId());
 
+    }
+
+    public String getEmail(String memberId) {
+        try {
+            ResultSet resultSet = CrudUtil.execute("select email from member where member_id = ?", memberId);
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

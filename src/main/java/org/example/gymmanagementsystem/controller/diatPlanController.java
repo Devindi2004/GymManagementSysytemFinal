@@ -4,21 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.gymmanagementsystem.dto.DietPlanDTO;
-import org.example.gymmanagementsystem.model.diatPlanModel;
+import org.example.gymmanagementsystem.model.DiatPlanModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class diatPlanController {
 
-    private final diatPlanModel dmodel  = new diatPlanModel();
+    private final DiatPlanModel dmodel  = new DiatPlanModel();
 
     @FXML
     private TableColumn<?, ?> clmDrink;
@@ -47,8 +45,6 @@ public class diatPlanController {
     @FXML
     private TextField txtPlanNameId;
 
-
-
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
         setNextId();
@@ -67,7 +63,7 @@ public class diatPlanController {
     }
 
     private void setNextId() throws SQLException, ClassNotFoundException {
-        String nextId = diatPlanModel.getNextId();
+        String nextId = DiatPlanModel.getNextId();
         txtDiatPlanId.setText(nextId);
     }
 
@@ -82,15 +78,32 @@ public class diatPlanController {
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtDiatPlanId.getText();
 
-        boolean isDelete = dmodel.delete(id);
-        if (isDelete) {
-            setNextId();
-            loadtable();
-            new Alert(Alert.AlertType.INFORMATION, "deleted Successfully..").show();
+        if (id == null || id.trim().isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a diet plan to delete.", ButtonType.OK).show();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Confirmation");
+        confirmAlert.setHeaderText(null);
+        confirmAlert.setContentText("Are you sure you want to delete the diet plan with ID: " + id + "?");
+
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean isDelete = dmodel.delete(id);
+            if (isDelete) {
+                setNextId();
+                loadtable();
+                new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully.").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Deleting Failed.").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "deleting Failed").show();
+            new Alert(Alert.AlertType.INFORMATION, "Deletion Cancelled.").show();
         }
     }
+
 
     @FXML
     void btnGenarateROnAction(ActionEvent event) {
@@ -99,7 +112,14 @@ public class diatPlanController {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtDiatPlanId.clear();
+        txtPlanNameId.clear();
+        txtDrinkId.clear();
+        txtFoodId.clear();
     }
 
     @FXML
@@ -143,7 +163,6 @@ public class diatPlanController {
                 drink
         );
 
-//        DietPlanDTO DietPlanDTO = new DietPlanDTO();
         boolean isUpdate = dmodel.update(dietPlanDTO);
         if (isUpdate) {
             setNextId();

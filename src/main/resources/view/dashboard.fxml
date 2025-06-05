@@ -14,9 +14,10 @@
 
 <AnchorPane fx:id="AnkMainPage" prefHeight="720.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.dashBoardController">
     <children>
+        <!-- Main Content Area -->
         <AnchorPane fx:id="ANKMainload" layoutX="271.0" layoutY="-4.0" prefHeight="725.0" prefWidth="982.0" stylesheets="@../css/Styile.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="-4.0">
             <children>
-                <ImageView fitHeight="725.0" fitWidth="998.0" layoutX="54.0" layoutY="78.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <ImageView fx:id="txtequipId" fitHeight="759.0" fitWidth="989.0" layoutX="9.0" layoutY="78.0" preserveRatio="false">
                     <image>
                         <Image url="@../imege/background.png" />
                     </image>
@@ -26,135 +27,87 @@
                 <String fx:value="Ancorpain" />
                 <String fx:value="button21" />
                 <String fx:value="bt-gradient" />
-            </styleClass></AnchorPane>
+            </styleClass>
+        </AnchorPane>
+
+        <!-- Sidebar -->
         <Pane layoutY="-1.0" prefHeight="720.0" prefWidth="275.0" style="-fx-background-color: #6f6341;" styleClass="Backgrount1" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <VBox layoutX="7.0" layoutY="111.0" prefHeight="540.0" prefWidth="258.0" spacing="5.0">
+                <VBox layoutX="9.0" layoutY="78.0" prefHeight="585.0" prefWidth="258.0" spacing="5.0">
                     <children>
-                        <Button fx:id="btnMemberId" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#memberOnAction" prefHeight="42.0" prefWidth="273.0" styleClass="menu-item" text="Member" textFill="#fffefe" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets right="10.0" top="5.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <padding>
-                                <Insets left="10.0" top="5.0" />
-                            </padding></Button>
-                        <Button fx:id="btnAttendanceId" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="40.0" layoutX="10.0" layoutY="80.0" mnemonicParsing="false" onAction="#AttendanceOnAction" prefHeight="35.0" prefWidth="244.0" styleClass="menu-item" text="Attendance" textFill="#fff9f9" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets right="10.0" top="5.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <padding>
-                                <Insets left="10.0" top="5.0" />
-                            </padding></Button>
-                        <Button fx:id="btnPaymentId" contentDisplay="RIGHT" graphicTextGap="40.0" layoutX="10.0" layoutY="328.0" mnemonicParsing="false" onAction="#PaymentOnAction" prefHeight="45.0" prefWidth="308.0" styleClass="menu-item" text="Payment" textFill="WHITE" wrapText="true">
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
+                        <!-- Repeat for each button, now with Font size 20 -->
+                        <Button fx:id="btnMemberId" onAction="#memberOnAction" prefHeight="42.0" prefWidth="273.0" styleClass="menu-item" stylesheets="@../css/example.css" text="Member" textFill="#fffefe">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" top="5.0" /></padding>
                         </Button>
-                        <Button fx:id="btnSessionId" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#sessionOnAction" prefHeight="46.0" prefWidth="289.0" styleClass="menu-item" text="Session" textFill="WHITE" wrapText="true" VBox.vgrow="ALWAYS">
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding></Button>
-                        <Button fx:id="btnClassId" contentDisplay="RIGHT" graphicTextGap="5.0" mnemonicParsing="false" onAction="#ClassOnAction" prefHeight="32.0" prefWidth="296.0" styleClass="menu-item" text="Class" textFill="WHITE">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding></Button>
-                        <Button fx:id="btnDiatplanId" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="10.0" layoutY="314.0" mnemonicParsing="false" onAction="#diatplanOnAction" prefHeight="46.0" prefWidth="266.0" styleClass="menu-item" text="Diat Plan" textFill="WHITE">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding></Button>
-                        <Button fx:id="btnTrainerId" contentDisplay="RIGHT" graphicTextGap="35.0" layoutX="10.0" layoutY="387.0" mnemonicParsing="false" onAction="#trainerOnAction" prefHeight="47.0" prefWidth="284.0" styleClass="menu-item" text="Trainer" textFill="WHITE">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding></Button>
-                        <Button fx:id="btnSupplierId" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" layoutX="10.0" layoutY="484.0" mnemonicParsing="false" onAction="#suplierOnAction" prefHeight="49.0" prefWidth="282.0" styleClass="menu-item" text="Supplier" textFill="#fffefe">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
+
+                        <Button fx:id="btnAttendanceId" onAction="#AttendanceOnAction" prefHeight="35.0" prefWidth="244.0" styleClass="menu-item" text="Attendance" textFill="#fff9f9">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" top="5.0" /></padding>
                         </Button>
-                        <Button fx:id="btnSupplimentId" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" layoutX="10.0" layoutY="493.0" mnemonicParsing="false" onAction="#SupplimentOnAction" prefHeight="39.0" prefWidth="282.0" styleClass="menu-item" text="Suppliment" textFill="#fffefe">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
+
+                        <Button fx:id="btnPaymentId" onAction="#PaymentOnAction" prefHeight="45.0" prefWidth="308.0" styleClass="menu-item" text="Payment" textFill="WHITE">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
                         </Button>
-                        <Button fx:id="btnOredrIid" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" layoutX="10.0" layoutY="501.0" mnemonicParsing="false" onAction="#orderOnAction" prefHeight="36.0" prefWidth="294.0" styleClass="menu-item" text="Order" textFill="#fffefe">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="5.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
+
+                        <Button fx:id="btnSessionId" onAction="#sessionOnAction" prefHeight="46.0" prefWidth="289.0" styleClass="menu-item" text="Session" textFill="WHITE">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnClassId" onAction="#ClassOnAction" prefHeight="32.0" prefWidth="296.0" styleClass="menu-item" text="Class" textFill="WHITE">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnDiatplanId" onAction="#diatplanOnAction" prefHeight="46.0" prefWidth="266.0" styleClass="menu-item" text="Diat Plan" textFill="WHITE">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnTrainerId" onAction="#trainerOnAction" prefHeight="47.0" prefWidth="284.0" styleClass="menu-item" text="Trainer" textFill="WHITE">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnSupplierId" onAction="#suplierOnAction" prefHeight="49.0" prefWidth="282.0" styleClass="menu-item" text="Supplier" textFill="#fffefe">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnSupplimentId" onAction="#SupplimentOnAction" prefHeight="39.0" prefWidth="282.0" styleClass="menu-item" text="Suppliment" textFill="#fffefe">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnOredrIid" onAction="#orderOnAction" prefHeight="36.0" prefWidth="294.0" styleClass="menu-item" text="Order" textFill="#fffefe">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
+                        </Button>
+
+                        <Button fx:id="btnEquipment" onAction="#equipmentOnAction" prefHeight="39.0" prefWidth="282.0" styleClass="menu-item" text="Equipment" textFill="#fffefe">
+                            <font><Font size="20.0" /></font>
+                            <padding><Insets left="10.0" /></padding>
                         </Button>
                     </children>
                 </VBox>
-                <Button layoutX="75.0" layoutY="659.0" mnemonicParsing="false" onAction="#goBackAction" prefHeight="27.0" prefWidth="113.0" styleClass="button1" stylesheets="@../css/Styile.css" text="LOG OUT">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
+
+                <!-- Logout Button -->
+                <Button layoutX="72.0" layoutY="734.0" mnemonicParsing="false" onAction="#goBackAction" prefHeight="27.0" prefWidth="113.0" styleClass="button1" stylesheets="@../css/Styile.css" text="LOG OUT">
+                    <font><Font size="13.0" /></font>
                 </Button>
-                <Label fx:id="btnGYMId" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="34.0" prefHeight="56.0" prefWidth="229.0" text="Lion power GYM" textFill="#fff0d9">
-                    <font>
-                        <Font name="System Bold" size="27.0" />
-                    </font>
+
+                <!-- GYM Title -->
+                <Label fx:id="btnGYMId" layoutX="14.0" layoutY="22.0" prefHeight="56.0" prefWidth="229.0" text="Lion power GYM" textFill="#fff0d9">
+                    <font><Font name="System Bold" size="27.0" /></font>
                 </Label>
             </children>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-         <stylesheets>
-            <URL value="@../css/mainDashboard.css" />
-            <URL value="@../css/example.css" />
-         </stylesheets>
+
+            <stylesheets>
+                <URL value="@../css/mainDashboard.css" />
+                <URL value="@../css/example.css" />
+            </stylesheets>
         </Pane>
     </children>
 </AnchorPane>

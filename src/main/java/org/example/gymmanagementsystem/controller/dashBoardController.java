@@ -66,6 +66,8 @@ public class dashBoardController implements Initializable {
         nevigateTo("/view/attendance.fxml");
     }
 
+
+
     public void memberOnAction(ActionEvent actionEvent) {
         nevigateTo("/view/member.fxml");
 
@@ -89,5 +91,9 @@ public class dashBoardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 nevigateTo("/view/member.fxml");
+    }
+
+    public void equipmentOnAction(ActionEvent actionEvent) {
+        nevigateTo("/view/equipment.fxml");
     }
 }

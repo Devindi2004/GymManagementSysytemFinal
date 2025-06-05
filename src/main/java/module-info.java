@@ -4,6 +4,7 @@ module org.example.gymmanagementsystem {
     requires java.sql;
     requires static lombok;
     requires java.desktop;
+    requires java.mail;
 
 
     opens org.example.gymmanagementsystem to javafx.fxml;
@@ -15,4 +16,6 @@ module org.example.gymmanagementsystem {
     exports org.example.gymmanagementsystem.dto;
     opens org.example.gymmanagementsystem.model;
     exports org.example.gymmanagementsystem.model;
+    exports org.example.gymmanagementsystem.dbConnection;
+    opens org.example.gymmanagementsystem.dbConnection;
 }

@@ -16,7 +16,9 @@ public class SupplimentModel {
             SupplementDTO supp = new SupplementDTO(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3)
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
 
             );
             supplementDTOS.add(supp);
@@ -42,11 +44,11 @@ public class SupplimentModel {
     }
 
     public boolean save(SupplementDTO supp) throws SQLException, ClassNotFoundException {
-        return CrudUtil.execute("insert into suppliment values (?,?,?)", supp.getSupplimentId(), supp.getName(), supp.getDescription());
+        return CrudUtil.execute("insert into suppliment values (?,?,?,?,?)", supp.getSupplimentId(), supp.getName(), supp.getDescription(),supp.getPrice(), supp.getQuantity());
     }
 
     public boolean update(SupplementDTO supplementDTO) throws SQLException, ClassNotFoundException {
-        return CrudUtil.execute("update suppliment set name = ?, description = ? WHERE suppliment_id = ?", supplementDTO.getName(), supplementDTO.getDescription(), supplementDTO.getSupplimentId());
+        return CrudUtil.execute("update suppliment set name = ?, description = ? , price = ?, quantity = ? WHERE suppliment_id = ?", supplementDTO.getName(), supplementDTO.getDescription(),supplementDTO.getPrice(),supplementDTO.getQuantity(), supplementDTO.getSupplimentId());
 
         }
     }

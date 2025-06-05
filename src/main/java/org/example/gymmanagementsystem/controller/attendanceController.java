@@ -9,13 +9,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.gymmanagementsystem.dto.AttendanceDTO;
 import org.example.gymmanagementsystem.model.AttendanceModel;
+import org.example.gymmanagementsystem.model.ClassModel;
+import org.example.gymmanagementsystem.model.MemberModel;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class attendanceController {
 
     private final AttendanceModel aModel = new AttendanceModel();
+    public ComboBox cmbAttendanceId;
 
     @FXML
     private TableColumn<?, ?> clmAttendance;
@@ -42,6 +47,8 @@ public class attendanceController {
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
         setNextId();
+        cmbAttendanceId.setItems(MemberModel.Allclassid());
+
         loadtable();
     }
 
@@ -72,13 +79,29 @@ public class attendanceController {
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtAttendanceId.getText();
 
-        boolean isDelete = aModel.delete(id);
-        if (isDelete) {
-            setNextId();
-            loadtable();
-            new Alert(Alert.AlertType.INFORMATION, "deleted Successfully..").show();
+        if (id == null || id.trim().isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a record to delete.", ButtonType.OK).show();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Confirmation");
+        confirmAlert.setHeaderText(null);
+        confirmAlert.setContentText("Are you sure you want to delete the attendance record with ID: " + id + "?");
+
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean isDelete = aModel.delete(id);
+            if (isDelete) {
+                setNextId();
+                loadtable();
+                new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully.").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Deleting Failed.").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "deleting Failed").show();
+            new Alert(Alert.AlertType.INFORMATION, "Deletion Cancelled.").show();
         }
     }
 
@@ -89,13 +112,19 @@ public class attendanceController {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtAttendanceId.clear();
+        txtmemID.clear();
+        dateId.setValue(null);
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtAttendanceId.getText();
-        String memID = txtmemID.getText();
+        String memID = cmbAttendanceId.getValue().toString();
         String attendanceDate = dateId.getValue().toString();
 
         AttendanceDTO attendanceDTO = new AttendanceDTO(
@@ -117,7 +146,7 @@ public class attendanceController {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtAttendanceId.getText();
-        String memID = txtmemID.getText();
+        String memID = cmbAttendanceId.getValue().toString();
         String attendanceDate = dateId.getValue().toString();
 
         AttendanceDTO attendanceDTO = new AttendanceDTO(

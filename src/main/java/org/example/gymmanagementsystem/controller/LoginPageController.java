@@ -15,6 +15,7 @@ import java.io.IOException;
         public TextField txtUsername;
         public Button btnLogin;
         public Label lblError;
+        public Button btnGoogle;
         private org.example.gymmanagementsystem.User user = new User("1", "1");
 
         public void loginOnAction(ActionEvent actionEvent) {
@@ -43,4 +44,15 @@ import java.io.IOException;
             alert.setContentText(message);
             alert.show();
         }
+
+        public void passwordOnAction(ActionEvent actionEvent) {
+            txtPassword.requestFocus();
+//            txtPassword.setFocusTraversable(true);
+           // System.out.println("kdhegkhdeegr");
+        }
+
+        public void emailOnAction(ActionEvent actionEvent) {
+            txtPassword.requestFocus();
+        }
+
     }

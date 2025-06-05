@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.gymmanagementsystem.dto.SupplementDTO;
@@ -16,8 +13,8 @@ import org.example.gymmanagementsystem.model.TrainerModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
-import static com.sun.beans.introspect.PropertyInfo.Name.description;
 
 public class trainerController {
 
@@ -85,15 +82,32 @@ public class trainerController {
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtTrainer.getText();
 
-        boolean isDelete = tModel.delete(id);
-        if (isDelete) {
-            setNextId();
-            loadtable();
-            new Alert(Alert.AlertType.INFORMATION, "deleted Successfully..").show();
+        if (id == null || id.trim().isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a trainer to delete.", ButtonType.OK).show();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Confirmation");
+        confirmAlert.setHeaderText(null);
+        confirmAlert.setContentText("Are you sure you want to delete the trainer with ID: " + id + "?");
+
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean isDelete = tModel.delete(id);
+            if (isDelete) {
+                setNextId();
+                loadtable();
+                new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully.").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Deleting Failed.").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "deleting Failed").show();
+            new Alert(Alert.AlertType.INFORMATION, "Deletion Cancelled.").show();
         }
     }
+
 
     @FXML
     void btnGenarateROnAction(ActionEvent event) {
@@ -102,7 +116,14 @@ public class trainerController {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtTrainer.clear();
+        txtTrainerName.clear();
+        txtContactId.clear();
+        txtSpecialization.clear();
     }
 
     @FXML

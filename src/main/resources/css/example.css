@@ -31,6 +31,14 @@
     -fx-scale-y: 1.02;
 }
 
+.menu-item:focused {
+    /*-fx-background-color: linear-gradient(to right, #ff8c00, #ffa500);*/
+    -fx-background-color: #c97917;
+    -fx-text-fill: black;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
 /* Gradient Background Class */
 .bt-gradient {
     -fx-background-color: linear-gradient(to bottom right, #434343, #000000);
@@ -57,4 +65,8 @@
     -fx-font-family: "Arial Black";
     -fx-font-size: 28px;
     -fx-text-fill: #ffd700;
+}
+
+.menu-item {
+    -fx-font-size: 20px !important;
 }

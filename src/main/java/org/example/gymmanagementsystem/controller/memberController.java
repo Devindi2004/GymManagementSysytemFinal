@@ -4,22 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.example.gymmanagementsystem.dto.DietPlanDTO;
 import org.example.gymmanagementsystem.dto.MemberDTO;
-import org.example.gymmanagementsystem.model.memberModel;
+import org.example.gymmanagementsystem.model.DiatPlanModel;
+import org.example.gymmanagementsystem.model.MemberModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class memberController {
 
-    private final memberModel mModel = new memberModel();
+    private final MemberModel mModel = new MemberModel();
+    public ComboBox cmbDiatPlan;
 
     @FXML
     private TableColumn<?, ?> clmAge;
@@ -49,9 +48,6 @@ public class memberController {
     private TextField txtContId;
 
     @FXML
-    private TextField txtDPlanId;
-
-    @FXML
     private TextField txtMemmberId;
 
 
@@ -64,6 +60,8 @@ public class memberController {
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
         setNextId();
+        cmbDiatPlan.setItems(DiatPlanModel.getAllDiatPlanId());
+
         loadtable();
     }
 
@@ -80,7 +78,7 @@ public class memberController {
         }
 
     private void setNextId() throws SQLException, ClassNotFoundException {
-        String nextId = memberModel.getnextId();
+        String nextId = MemberModel.getnextId();
         txtMemmberId.setText(nextId);
 
     }
@@ -99,13 +97,29 @@ public class memberController {
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtMemmberId.getText();
 
-        boolean isDelete = mModel.delete(id);
-        if (isDelete) {
-            setNextId();
-            loadtable();
-            new Alert(Alert.AlertType.INFORMATION, "deleted Successfully..").show();
+        if (id == null || id.trim().isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a member to delete.", ButtonType.OK).show();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Confirmation");
+        confirmAlert.setHeaderText(null);
+        confirmAlert.setContentText("Are you sure you want to delete the member with ID: " + id + "?");
+
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean isDelete = mModel.delete(id);
+            if (isDelete) {
+                setNextId();
+                loadtable();
+                new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully.").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Deleting Failed.").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "deleting Failed").show();
+            new Alert(Alert.AlertType.INFORMATION, "Deletion Cancelled.").show();
         }
     }
 
@@ -116,13 +130,22 @@ public class memberController {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtMemmberId.clear();
+        cmbDiatPlan.getSelectionModel().clearSelection();
+        txtNameId.clear();
+        txtEmailId.clear();
+        txtContId.clear();
+        txtAgeId.clear();
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtMemmberId.getText();
-        String dPlanId = txtDPlanId.getText();
+        String dPlanId = cmbDiatPlan.getValue().toString();
         String name = txtNameId.getText();
         String email = txtEmailId.getText();
         String contact = txtContId.getText();
@@ -151,7 +174,7 @@ public class memberController {
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtMemmberId.getText();
-        String dPlanId = txtDPlanId.getText();
+        String dPlanId = cmbDiatPlan.getValue().toString();
         String name = txtNameId.getText();
         String email = txtEmailId.getText();
         String contact = txtContId.getText();
@@ -181,7 +204,7 @@ public class memberController {
 
         if (selectedItem != null) {
             txtMemmberId.setText(selectedItem.getMemberId());
-            txtDPlanId.setText(selectedItem.getDietPlanId());
+            cmbDiatPlan.setValue(selectedItem.getDietPlanId());
             txtNameId.setText(selectedItem.getName());
             txtAgeId.setText(selectedItem.getAge());
             txtEmailId.setText(selectedItem.getEmail());
