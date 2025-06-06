@@ -12,13 +12,19 @@ import org.example.gymmanagementsystem.model.MemberModel;
 import org.example.gymmanagementsystem.model.OrderModel;
 import org.example.gymmanagementsystem.model.SupplimentModel;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
+import java.util.Properties;
 
-public class ordersController {
+public class OrdersController {
     private final MemberModel mModel = new MemberModel();
     private final SupplimentModel   sModel = new SupplimentModel();
     private final OrderModel oModel = new OrderModel();
@@ -65,7 +71,7 @@ public class ordersController {
         try {
             setSuppliment();
             setMemberids();
-            setCellValueFactory();
+            //setCellValueFactory();
             setNextId();
             cmbMemberId.setItems(MemberModel.AllMemberId());
 
@@ -157,7 +163,8 @@ public class ordersController {
         boolean isSaved = oModel.save(orderDTO , orderPayment , supplementId);
 
         if (isSaved) {
-            sendEmail(mModel.getEmail(memberId) , price , name);
+            String supplementName = new String(sModel.getSupplementName(supplementId));
+            sendEmail(mModel.getEmail(memberId) , price , name, memberId, supplementName);
             setNextId();
             loadTable();
             clearFields();
@@ -249,7 +256,7 @@ public class ordersController {
             }
         }
     }
-    private static void sendEmail(String email, double price, String recipientEmail) {
+    private static void sendEmail(String email, double price, String recipientEmail, String memberId,String supplementName) {
 
         new Thread(() -> {
 
@@ -259,39 +266,41 @@ public class ordersController {
             String body = "Dear Customer,\n" +
                     "This is to inform you that your order has been placed successfully. We will contact you shortly to confirm the details.\n" +
                     "\n price: " + price + "\n" +
-                    "\n supplement Name: " + recipientEmail+ "\n" +
+                    "\n supplement Name: " + supplementName + "\n" +
+            "\n Member ID: " + memberId + "\n" +
+            "\n Member Name: " + recipientEmail + "\n" +
                     "Thank you for choosing us.\n" +
                     "Best regards,\n" +
                     "Gym Management System";
-            java.util.Properties properties = new java.util.Properties();
+            Properties properties = new Properties();
             properties.put("mail.smtp.auth", "true");
             properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.smtp.host", "smtp.gmail.com");
             properties.put("mail.smtp.port", "587");
 
-            javax.mail.Session session = javax.mail.Session.getInstance(properties, new javax.mail.Authenticator() {
-                protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                    return new javax.mail.PasswordAuthentication(senderEmail, senderPassword);
+            Session session = Session.getInstance(properties, new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(senderEmail, senderPassword);
                 }
             });
 
             try {
-                javax.mail.Message message = new javax.mail.internet.MimeMessage(session);
-                message.setFrom(new javax.mail.internet.InternetAddress(senderEmail));
-                message.setRecipients(javax.mail.Message.RecipientType.TO, javax.mail.internet.InternetAddress.parse(email));
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(senderEmail));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
                 message.setSubject(subject);
 
-                javax.mail.Multipart multipart = new javax.mail.internet.MimeMultipart();
+                Multipart multipart = new MimeMultipart();
 
-                javax.mail.internet.MimeBodyPart messageBodyPart = new javax.mail.internet.MimeBodyPart();
+                MimeBodyPart messageBodyPart = new MimeBodyPart();
                 messageBodyPart.setText(body);
                 multipart.addBodyPart(messageBodyPart);
 
-                javax.mail.internet.MimeBodyPart attachmentPart = new javax.mail.internet.MimeBodyPart();
+                MimeBodyPart attachmentPart = new MimeBodyPart();
 
                 message.setContent(multipart);
 
-                javax.mail.Transport.send(message);
+                Transport.send(message);
 
                 System.out.println("Email sent successfully with the QR code attachment.");
             } catch (Exception e) {

@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500" prefWidth="900" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.LoginPageController">
+<BorderPane prefHeight="649.0" prefWidth="967.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.LoginPageController">
 
     <!-- LEFT: Login Form -->
     <left>
-        <VBox alignment="CENTER_LEFT" prefHeight="522.0" prefWidth="447.0" spacing="15" style="-fx-background-color: #0F0F0F;">
+        <VBox alignment="CENTER_LEFT" prefHeight="577.0" prefWidth="467.0" spacing="15" style="-fx-background-color: #0F0F0F;">
             <padding><Insets bottom="40" left="40" right="40" top="40" /></padding>
 
             <Label prefHeight="54.0" prefWidth="147.0" style="-fx-font-size: 26px; -fx-font-weight: bold;" text="         Login " textAlignment="CENTER" textFill="white">
@@ -27,7 +27,9 @@
             </font></Label>
 
             <Label style="-fx-font-size: 16px;" text="Email" textFill="#CCCCCC" />
-            <TextField fx:id="txtUsername" onAction="#emailOnAction" prefHeight="33.0" prefWidth="367.0" promptText="user@gmail.com" style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-background-radius: 8;" />
+            <TextField fx:id="txtEmail" onAction="#emailOnAction" prefHeight="33.0" prefWidth="367.0" promptText="user@gmail.com" style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-background-radius: 8;" />
+         <Label layoutX="50.0" layoutY="230.0" style="-fx-font-size: 16px;" text="Username" textFill="#CCCCCC" />
+         <PasswordField fx:id="txtuserName" layoutX="50.0" layoutY="371.0" onAction="#userNameOnAction" prefHeight="36.0" prefWidth="367.0" promptText="username" style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-background-radius: 8;" />
 
             <Label style="-fx-font-size: 16px;" text="Password" textFill="#CCCCCC" />
             <PasswordField fx:id="txtPassword" onAction="#passwordOnAction" prefHeight="36.0" prefWidth="367.0" promptText="Password" style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-background-radius: 8;" />
@@ -35,7 +37,7 @@
 
 
 
-            <Hyperlink style="-fx-text-fill: #888;" text="Forgot Password?" />
+            <Hyperlink fx:id="txtForgotId" onAction="#forgotOnAction" style="-fx-text-fill: #888;" text="Forgot Password?" />
 
             <Label fx:id="lblError" textFill="red" visible="false" />
 

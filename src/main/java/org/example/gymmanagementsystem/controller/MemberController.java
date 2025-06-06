@@ -14,8 +14,9 @@ import org.example.gymmanagementsystem.model.MemberModel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
-public class memberController {
+public class MemberController {
 
     private final MemberModel mModel = new MemberModel();
     public ComboBox cmbDiatPlan;
@@ -57,6 +58,16 @@ public class memberController {
     @FXML
     private TextField txtNameId;
 
+    // Email validation pattern
+    private static final String EMAIL_PATTERN =
+            "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+    // Contact validation pattern (Sri Lankan phone numbers)
+    private static final String CONTACT_PATTERN = "^(\\+94|0)(7[0-9]{8}|[1-9][0-9]{8})$";
+
+    private final Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
+    private final Pattern contactPattern = Pattern.compile(CONTACT_PATTERN);
+
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
         setNextId();
@@ -75,7 +86,7 @@ public class memberController {
 
         tblMember.setItems(observableList);
 
-        }
+    }
 
     private void setNextId() throws SQLException, ClassNotFoundException {
         String nextId = MemberModel.getnextId();
@@ -91,6 +102,40 @@ public class memberController {
         clmContact.setCellValueFactory(new PropertyValueFactory<>("phone"));
         clmAge.setCellValueFactory(new PropertyValueFactory<>("age"));
 
+    }
+
+    // Email validation method
+    private boolean isValidEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            return false;
+        }
+        return emailPattern.matcher(email.trim()).matches();
+    }
+
+    // Contact validation method
+    private boolean isValidContact(String contact) {
+        if (contact == null || contact.trim().isEmpty()) {
+            return false;
+        }
+        return contactPattern.matcher(contact.trim()).matches();
+    }
+
+    // Input validation method
+    private boolean validateInputs(String email, String contact) {
+        if (!isValidEmail(email)) {
+            new Alert(Alert.AlertType.ERROR,
+                    "Invalid email format. Please enter a valid email address.").show();
+            return false;
+        }
+
+        if (!isValidContact(contact)) {
+            new Alert(Alert.AlertType.ERROR,
+                    "Invalid contact number. Please enter a valid Sri Lankan phone number.\n" +
+                            "Format: 0771234567 or +94771234567").show();
+            return false;
+        }
+
+        return true;
     }
 
     @FXML
@@ -151,6 +196,11 @@ public class memberController {
         String contact = txtContId.getText();
         String age = txtAgeId.getText();
 
+        // Validate email and contact before saving
+        if (!validateInputs(email, contact)) {
+            return;
+        }
+
         MemberDTO memberDTO = new MemberDTO(
                 id,
                 dPlanId,
@@ -179,6 +229,11 @@ public class memberController {
         String email = txtEmailId.getText();
         String contact = txtContId.getText();
         String age = txtAgeId.getText();
+
+        // Validate email and contact before updating
+        if (!validateInputs(email, contact)) {
+            return;
+        }
 
         MemberDTO memberDTO = new MemberDTO(
                 id,

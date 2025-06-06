@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class dashBoardController implements Initializable {
+public class DashBoardController implements Initializable {
     public AnchorPane AnkMainPage;
     public AnchorPane ANKMainload;
     public Button btnMemberId;
@@ -69,6 +69,8 @@ public class dashBoardController implements Initializable {
         nevigateTo("/view/session.fxml");
     }
 
+/* <<<<<<<<<<<<<<  ✨ Windsurf Command ⭐ >>>>>>>>>>>>>>>> */
+/* <<<<<<<<<<  bf1d52ee-dc99-4e71-b623-3e71457a6769  >>>>>>>>>>> */
     public void PaymentOnAction(ActionEvent actionEvent) {
         nevigateTo("/view/payment.fxml");
     }

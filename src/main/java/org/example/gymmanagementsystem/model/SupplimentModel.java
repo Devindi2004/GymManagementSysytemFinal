@@ -51,4 +51,16 @@ public class SupplimentModel {
         return CrudUtil.execute("update suppliment set name = ?, description = ? , price = ?, quantity = ? WHERE suppliment_id = ?", supplementDTO.getName(), supplementDTO.getDescription(),supplementDTO.getPrice(),supplementDTO.getQuantity(), supplementDTO.getSupplimentId());
 
         }
+
+    public char[] getSupplementName(String supplementId) {
+        try {
+            ResultSet resultSet = CrudUtil.execute("select name from suppliment where suppliment_id = ?", supplementId);
+            if (resultSet.next()) {
+                return resultSet.getString(1).toCharArray();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+}

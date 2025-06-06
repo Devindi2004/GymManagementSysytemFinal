@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class supplierController {
+public class SupplierController {
 
     private final SupplierModel spModel = new SupplierModel();
 

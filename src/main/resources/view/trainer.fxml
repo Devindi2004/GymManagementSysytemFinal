@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720" prefWidth="1000" style="-fx-background-color: #e0c98d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.trainerController">
+<AnchorPane prefHeight="720" prefWidth="1000" style="-fx-background-color: #e0c98d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gymmanagementsystem.controller.TrainerController">
     <VBox alignment="TOP_CENTER" layoutX="30" layoutY="30" prefWidth="940" spacing="25">
         <padding>
             <Insets bottom="20" left="30" right="30" top="20" />

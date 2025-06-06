@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class paymentController {
+public class PaymentController {
 
     @FXML
     private TableColumn<?, ?> clmAmount;

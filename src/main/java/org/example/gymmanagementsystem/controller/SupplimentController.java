@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class supplimentController {
+public class SupplimentController {
 
     private final SupplimentModel suppmodel  = new SupplimentModel();
     public TextField txtPrice;

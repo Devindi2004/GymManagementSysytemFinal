@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class sessionController {
+public class SessionController {
 
     private final SessionModel ssModel = new SessionModel();
     public ComboBox cmbClassId;

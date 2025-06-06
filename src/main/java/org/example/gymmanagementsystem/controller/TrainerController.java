@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.example.gymmanagementsystem.dto.SupplementDTO;
 import org.example.gymmanagementsystem.dto.TrainerDTO;
 import org.example.gymmanagementsystem.model.TrainerModel;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
-public class trainerController {
+public class TrainerController {
 
     private final TrainerModel tModel  = new TrainerModel();
 

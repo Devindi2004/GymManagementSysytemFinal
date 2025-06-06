@@ -9,7 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.example.gymmanagementsystem.dto.AttendanceDTO;
 import org.example.gymmanagementsystem.model.AttendanceModel;
-import org.example.gymmanagementsystem.model.ClassModel;
 import org.example.gymmanagementsystem.model.MemberModel;
 
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class attendanceController {
+public class AttendanceController {
 
     private final AttendanceModel aModel = new AttendanceModel();
     public ComboBox cmbAttendanceId;

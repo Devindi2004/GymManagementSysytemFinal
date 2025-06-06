@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class equipmentController {
+public class EquipmentController {
 
     private final EquipmentModel eModel = new EquipmentModel();
     public ComboBox cmbClassId;

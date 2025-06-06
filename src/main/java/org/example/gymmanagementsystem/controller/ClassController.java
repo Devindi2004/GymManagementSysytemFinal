@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class classController {
+public class ClassController {
 
     private final ClassModel cModel = new ClassModel();
 

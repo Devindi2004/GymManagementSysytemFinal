@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class diatPlanController {
+public class DiatPlanController {
 
     private final DiatPlanModel dmodel  = new DiatPlanModel();
 
