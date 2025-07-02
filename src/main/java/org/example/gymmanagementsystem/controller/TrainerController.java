@@ -187,14 +187,7 @@ public class TrainerController {
             txtContactId.setText(selectedItem.getContact());
             txtSpecialization.setText(selectedItem.getSpecialization());
 
-
-
-//            // save button disable
-//            btnSave.setDisable(true);
-//
-//            // update, delete button enable
-//            btnUpdate.setDisable(false);
-//            btnDelete.setDisable(false);
+            
         }
     }
 

@@ -58,11 +58,9 @@ public class MemberController {
     @FXML
     private TextField txtNameId;
 
-    // Email validation pattern
     private static final String EMAIL_PATTERN =
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-    // Contact validation pattern (Sri Lankan phone numbers)
     private static final String CONTACT_PATTERN = "^(\\+94|0)(7[0-9]{8}|[1-9][0-9]{8})$";
 
     private final Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
@@ -104,7 +102,6 @@ public class MemberController {
 
     }
 
-    // Email validation method
     private boolean isValidEmail(String email) {
         if (email == null || email.trim().isEmpty()) {
             return false;
@@ -112,7 +109,6 @@ public class MemberController {
         return emailPattern.matcher(email.trim()).matches();
     }
 
-    // Contact validation method
     private boolean isValidContact(String contact) {
         if (contact == null || contact.trim().isEmpty()) {
             return false;
@@ -120,7 +116,6 @@ public class MemberController {
         return contactPattern.matcher(contact.trim()).matches();
     }
 
-    // Input validation method
     private boolean validateInputs(String email, String contact) {
         if (!isValidEmail(email)) {
             new Alert(Alert.AlertType.ERROR,
@@ -196,7 +191,6 @@ public class MemberController {
         String contact = txtContId.getText();
         String age = txtAgeId.getText();
 
-        // Validate email and contact before saving
         if (!validateInputs(email, contact)) {
             return;
         }
@@ -230,7 +224,6 @@ public class MemberController {
         String contact = txtContId.getText();
         String age = txtAgeId.getText();
 
-        // Validate email and contact before updating
         if (!validateInputs(email, contact)) {
             return;
         }
@@ -266,12 +259,7 @@ public class MemberController {
             txtContId.setText(selectedItem.getPhone());
 
 
-//            // save button disable
-//            btnSave.setDisable(true);
-//
-//            // update, delete button enable
-//            btnUpdate.setDisable(false);
-//            btnDelete.setDisable(false);
+
         }
     }
 

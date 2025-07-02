@@ -227,7 +227,6 @@ public class OrdersController {
 
     @FXML
     void btnGenarateROnAction(ActionEvent event) {
-        // Report generation logic placeholder
         new Alert(Alert.AlertType.INFORMATION, "Generate Report clicked.").show();
     }
 

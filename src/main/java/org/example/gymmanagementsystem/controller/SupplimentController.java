@@ -191,12 +191,7 @@ public class SupplimentController {
 
 
 
-//            // save button disable
-//            btnSave.setDisable(true);
-//
-//            // update, delete button enable
-//            btnUpdate.setDisable(false);
-//            btnDelete.setDisable(false);
+
         }
     }
 
